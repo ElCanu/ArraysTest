@@ -23,7 +23,7 @@
 
             
 
-            // Validation si besoin de redimenssionner le array
+            // Validation si besoin de resize le array
             if (!String.IsNullOrEmpty(noms[noms.Length - 1]))
             {
                 Array.Resize(ref noms, noms.Length * 2);
@@ -36,6 +36,7 @@
 
             do
             {
+                Console.Clear();
                 Console.WriteLine("Entrez prenom étudiant:");
                 prenom = Console.ReadLine() ?? String.Empty;
                 valide = !string.IsNullOrEmpty(prenom);
@@ -50,6 +51,7 @@
 
             do
             {
+                Console.Clear();
                 Console.WriteLine("Entrez nom étudiant:");
                 nom = Console.ReadLine() ?? String.Empty;
                 valide = !string.IsNullOrEmpty(nom);
@@ -98,7 +100,7 @@
             do
             {
                 Console.Clear();
-                Console.WriteLine("Entrez note de l'intra");
+                Console.WriteLine("Entrez note de l'intra:");
                 valide = float.TryParse(Console.ReadLine(), out noteIntra)
                     && noteIntra <= 100
                     && noteIntra > 0;
@@ -114,7 +116,7 @@
             do
             {
                 Console.Clear();
-                Console.WriteLine("Entrez note de l'exam final");
+                Console.WriteLine("Entrez note de l'exam final:");
                 valide = float.TryParse(Console.ReadLine(), out noteFinal)
                     && noteFinal <= 100
                     && noteFinal > 0;
@@ -127,7 +129,7 @@
                 }
             } while (!valide);
 
-            // ajout des donnes saisi dans le array (a la première place disponible)
+            // ajout des donnes saisi à la première place disponible
             for (int i = 0, taille = noms.Length; i < taille; ++i)
             {
                 if (String.IsNullOrEmpty(noms[i]))
@@ -141,6 +143,15 @@
                     break;
                 }
             }
+
+            //affichage des donnes (debug) en boucle pour etre ready pour plustard 
+            Console.Clear();
+            Console.WriteLine($"{"#", -5}|{"Prénom", -12}|{"Noms", -12}|{"TP1", -8}|{"TP2", -8}|{"Intra", -7}|{"Final", -7}");
+            for (int i = 0, taille = noms.Length; i < taille; ++i)
+            {
+                Console.WriteLine($"{i, -5}|{prenoms[i], -12}|{noms[i], -12}|{notesTp1[i], -8}|{notesTp2[i], -8}|{notesIntra[i], -7}|{notesFinal[i], -7}");
+            }
+                
 
         }
     }
