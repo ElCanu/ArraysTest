@@ -29,6 +29,8 @@
             int nbEtudiants = 0;
             bool stop = false;
 
+            ConsoleKeyInfo input;
+
             do
             {
                 // Validation si besoin de resize le array
@@ -155,34 +157,37 @@
                     }
                 }
 
-                //affichage des donnes (debug) en boucle pour etre ready pour plustard 
-                Console.Clear();
-                Console.WriteLine($"{"#",-5}|{"Prénom",-12}|{"Nom",-12}|{"TP1",-8}|{"TP2",-8}|{"Intra",-7}|{"Final",-7}||{"Note Total",-7}");
-                for (int i = 0, taille = noms.Length; i < taille; ++i)
-                {
-                    if (!String.IsNullOrEmpty(noms[i]))
-                    {
-                        Console.WriteLine($"{i,-5}|{prenoms[i],-12}|{noms[i],-12}|{notesTp1[i],-8}|{notesTp2[i],-8}|{notesIntra[i],-7}|{notesFinal[i],-7}||{notesTotal[i],-7}");
-                        somme += noteTotal;
-                        nbEtudiants++;
-                    }
-
-                }
-
                 do
                 {
-                    Console.WriteLine("Voulez-vous entrer un autre étudiant? O/N");
-                    valide = Console.ReadKey().Key == ConsoleKey.O || Console.ReadKey().Key == ConsoleKey.N;
+                    Console.WriteLine("\nVoulez-vous entrer un autre étudiant? O/N");
+                    input = Console.ReadKey();
+                    valide = input.Key == ConsoleKey.O || input.Key == ConsoleKey.N;
 
                     if (!valide)
                     {
                         Console.WriteLine("Entrée invalide!! Veuillez appuyer sur une touche pour recommencer...");
                     }
                 } while(!valide);
+                stop = input.Key == ConsoleKey.N;
             } while (!stop);
-           
+
+            //affichage des donnes (debug) en boucle pour etre ready pour plustard 
+            Console.Clear();
+            Console.WriteLine($"{"#",-5}|{"Prénom",-12}|{"Nom",-12}|{"TP1",-8}|{"TP2",-8}|{"Intra",-7}|{"Final",-7}||{"Note Total",-7}");
+            for (int i = 0, taille = noms.Length; i < taille; ++i)
+            {
+                if (!String.IsNullOrEmpty(noms[i]))
+                {
+                    Console.WriteLine($"{i,-5}|{prenoms[i],-12}|{noms[i],-12}|{notesTp1[i],-8}|{notesTp2[i],-8}|{notesIntra[i],-7}|{notesFinal[i],-7}||{notesTotal[i],-7}");
+                    somme += noteTotal;
+                    nbEtudiants++;
+                }
+
+            }
+
             moyenne = noteTotal / nbEtudiants;
             Console.WriteLine($"\n\nMoyenne du groupe: {moyenne}");
+
         }
     }
 }
