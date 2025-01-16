@@ -147,10 +147,10 @@ internal class Program
 
                     }
 
-                    moyenne = 
+                    moyenne = somme / nbEmploye;
                     Console.WriteLine($"\n\nMoyenne du groupe: {moyenne}");
 
-                    Console.WriteLine("Appuyez sur une touche pour fermer le programme...");
+                    Console.WriteLine("Appuyez sur une touche pour retourner au menu principale...");
                     Console.ReadKey();
 
                     break;
