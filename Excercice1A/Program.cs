@@ -22,7 +22,11 @@
             float noteIntra;
             float noteFinal;
 
-            float noteTotal;
+            float noteTotal = 0;
+            float moyenne = 0;
+            float somme = 0;
+
+            
 
             
 
@@ -152,13 +156,18 @@
             
             //affichage des donnes (debug) en boucle pour etre ready pour plustard 
             Console.Clear();
-            Console.WriteLine($"{"#", -5}|{"Prénom", -12}|{"Nom", -12}|{"TP1", -8}|{"TP2", -8}|{"Intra", -7}|{"Final", -7}");
-            for (int i = 0, taille = noms.Length; i < taille; ++i)
+            Console.WriteLine($"{"#", -5}|{"Prénom", -12}|{"Nom", -12}|{"TP1", -8}|{"TP2", -8}|{"Intra", -7}|{"Final", -7}||{"Note Total", -7}");
+            for (int i = 0 , taille = noms.Length; i < taille; ++i)
             {
-                Console.WriteLine($"{i, -5}|{prenoms[i], -12}|{noms[i], -12}|{notesTp1[i], -8}|{notesTp2[i], -8}|{notesIntra[i], -7}|{notesFinal[i], -7}");
-            }
+                if(!String.IsNullOrEmpty(noms[i]))
+                {
+                    Console.WriteLine($"{i,-5}|{prenoms[i],-12}|{noms[i],-12}|{notesTp1[i],-8}|{notesTp2[i],-8}|{notesIntra[i],-7}|{notesFinal[i],-7}||{notesTotal[i],-7}");
+                    somme += noteTotal;
+                }
                 
+            }
 
+            Console.WriteLine($"");
         }
     }
 }
