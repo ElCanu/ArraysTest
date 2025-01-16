@@ -143,7 +143,7 @@ internal class Program
                     {
                         if (!String.IsNullOrEmpty(noms[i]))
                         {
-                            Console.WriteLine($"{i,-5}|{prenoms[i],-12}|{noms[i],-12}|{occupations[i],-12}|{salaires[i],-12}");
+                            Console.WriteLine($"{i,-5}|{prenoms[i],-12}|{noms[i],-12}|{occupations[i],-12}|{salaires[i],-12:C}");
                             somme += salaires[i];
                             nbEmploye++;
 
@@ -168,15 +168,15 @@ internal class Program
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex);
-                        Console.WriteLine("Appuyez sur une touche pour recommencer...");
+                        Console.WriteLine("\nAppuyez sur une touche pour recommencer...");
                         Console.ReadKey();
                         break;
                     }
                     Console.WriteLine(@$"
             Somme des salaires  : {somme:C}
             Moyenne des salaires: {moyenne:C}
-            Salaire le plus haut: {salaireLePlusHaut} ({prenoms[indexSalaireHaut]} {noms[indexSalaireHaut]})
-            Salaire le plus bas : {salaireLePlusBas} ({prenoms[indexSalaireBas]} {noms[indexSalaireBas]})
+            Salaire le plus haut: {salaireLePlusHaut:C} ({prenoms[indexSalaireHaut]} {noms[indexSalaireHaut]})
+            Salaire le plus bas : {salaireLePlusBas:C} ({prenoms[indexSalaireBas]} {noms[indexSalaireBas]})
                     ");
 
                     Console.WriteLine("Appuyez sur une touche pour retourner au menu principale...");
