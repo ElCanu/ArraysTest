@@ -159,7 +159,8 @@
 
                 do
                 {
-                    Console.WriteLine("\nVoulez-vous entrer un autre étudiant? O/N");
+                    Console.Clear();
+                    Console.WriteLine("Voulez-vous entrer un autre étudiant? O/N");
                     input = Console.ReadKey();
                     valide = input.Key == ConsoleKey.O || input.Key == ConsoleKey.N;
 
@@ -187,6 +188,9 @@
 
             moyenne = noteTotal / nbEtudiants;
             Console.WriteLine($"\n\nMoyenne du groupe: {moyenne}");
+
+            Console.WriteLine("Appuyez sur une touche pour fermer le programme...");
+            Console.ReadKey();
 
         }
     }
