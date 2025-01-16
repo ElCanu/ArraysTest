@@ -180,13 +180,13 @@
                 if (!String.IsNullOrEmpty(noms[i]))
                 {
                     Console.WriteLine($"{i,-5}|{prenoms[i],-12}|{noms[i],-12}|{notesTp1[i],-8}|{notesTp2[i],-8}|{notesIntra[i],-7}|{notesFinal[i],-7}||{notesTotal[i],-7}");
-                    somme += noteTotal;
+                    somme += notesTotal[i];
                     nbEtudiants++;
                 }
 
             }
 
-            moyenne = noteTotal / nbEtudiants;
+            moyenne = somme / nbEtudiants;
             Console.WriteLine($"\n\nMoyenne du groupe: {moyenne}");
 
             Console.WriteLine("Appuyez sur une touche pour fermer le programme...");
