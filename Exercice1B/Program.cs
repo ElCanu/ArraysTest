@@ -134,6 +134,36 @@ internal class Program
                     break;
                 case ConsoleKey.D2 or ConsoleKey.NumPad2: //Rechercher à partir d'un salaire
 
+                    do
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Afficher tout les salaire en haut de:");
+                        valide = decimal.TryParse(Console.ReadLine(), out recherche)
+                            && recherche <= 999999
+                            && recherche > 0;
+
+                        if (!valide)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Entrée invalide! Appuyez sur une touche pour recommencer...");
+                            Console.ReadKey();
+                        }
+                    } while (!valide);
+
+                    Console.Clear();
+                    Console.WriteLine($"{"#",-5}|{"Prénom",-12}|{"Nom",-12}|{"Occupation",-12}|{"Salaire",-12}");
+
+                    for (int i = 0, taille = noms.Length; i < taille; ++i)
+                    {
+                        if (recherche < salaires[i])
+                        {
+
+                            Console.WriteLine($"{i,-5}|{prenoms[i],-12}|{noms[i],-12}|{occupations[i],-12}|{salaires[i],-12:C}");
+
+                        }
+                    }
+                    Console.WriteLine("\nAppuyez sur une touche pour retourner au menu principale...");
+                    Console.ReadKey();
                     break;
                 case ConsoleKey.D3 or ConsoleKey.NumPad3: //Afficher tout les employées et statistiques
 
