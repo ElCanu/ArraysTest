@@ -30,6 +30,7 @@ internal class Program
 
         while (true)
         {
+            Console.Clear();
             Console.WriteLine(@"
             Veuillez choisir l'une des options suivantes:
             1 - Ajouter un(e) employé(e)
