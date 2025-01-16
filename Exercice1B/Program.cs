@@ -19,8 +19,10 @@ internal class Program
 
         decimal somme = 0;
         decimal moyenne = 0;
-        decimal salairePlusHaut = -1;
-        decimal salairePlusBas = 1000000;
+        decimal salaireLePlusHaut = -1;
+        decimal salaireLePlusBas = 1000000;
+        int indexSalaireHaut = -1;
+        int indexSalaireBas = -1;
 
         decimal recherche = 0;
         int nbEmploye = 0;
@@ -136,27 +138,53 @@ internal class Program
                 case ConsoleKey.D3 or ConsoleKey.NumPad3: //Afficher tout les employées et statistiques
 
                     Console.Clear();
-                    Console.WriteLine($"{"#",-5}|{"Prénom",-12}|{"Nom",-12}|{"Occupation",-8}|{"Salaire",-8}");
+                    Console.WriteLine($"{"#",-5}|{"Prénom",-12}|{"Nom",-12}|{"Occupation",-12}|{"Salaire",-12}");
                     for (int i = 0, taille = noms.Length; i < taille; ++i)
                     {
                         if (!String.IsNullOrEmpty(noms[i]))
                         {
-                            Console.WriteLine($"{i,-5}|{prenoms[i],-12}|{noms[i],-12}|{occupations[i],-8}|{salaires[i],-8}");
+                            Console.WriteLine($"{i,-5}|{prenoms[i],-12}|{noms[i],-12}|{occupations[i],-12}|{salaires[i],-12}");
                             somme += salaires[i];
                             nbEmploye++;
+
+                            if (salaires[i] < salaireLePlusBas)
+                            {
+                                salaireLePlusBas = salaires[i];
+                                indexSalaireBas = i;
+                            }
+                            if (salaires[i] > salaireLePlusHaut)
+                            {
+                                salaireLePlusHaut = salaires[i];
+                                indexSalaireHaut = i;
+                            }
+
                         }
 
                     }
-
-                    moyenne = somme / nbEmploye;
-                    Console.WriteLine($"\n\nMoyenne du groupe: {moyenne}");
+                    try
+                    {
+                        moyenne = somme / nbEmploye;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                        Console.WriteLine("Appuyez sur une touche pour recommencer...");
+                        Console.ReadKey();
+                        break;
+                    }
+                    Console.WriteLine(@$"
+            Somme des salaires  : {somme:C}
+            Moyenne des salaires: {moyenne:C}
+            Salaire le plus haut: {salaireLePlusHaut} ({prenoms[indexSalaireHaut]} {noms[indexSalaireHaut]})
+            Salaire le plus bas : {salaireLePlusBas} ({prenoms[indexSalaireBas]} {noms[indexSalaireBas]})
+                    ");
 
                     Console.WriteLine("Appuyez sur une touche pour retourner au menu principale...");
                     Console.ReadKey();
 
                     break;
                 case ConsoleKey.D4 or ConsoleKey.NumPad4: //Quit
-
+                    Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("Entrée invalide! Appuyez sur une touche pour recommencer...");
