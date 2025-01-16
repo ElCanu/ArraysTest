@@ -172,7 +172,7 @@
                 stop = input.Key == ConsoleKey.N;
             } while (!stop);
 
-            //affichage des donnes (debug) en boucle pour etre ready pour plustard 
+            //affichage des donnes
             Console.Clear();
             Console.WriteLine($"{"#",-5}|{"Prénom",-12}|{"Nom",-12}|{"TP1",-8}|{"TP2",-8}|{"Intra",-7}|{"Final",-7}||{"Note Total",-7}");
             for (int i = 0, taille = noms.Length; i < taille; ++i)
